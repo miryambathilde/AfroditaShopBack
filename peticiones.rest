@@ -73,6 +73,17 @@ Content-Type: application/json
 
 ###
 
+POST http://localhost:3000/api/users/register
+Content-Type: application/json
+
+{
+  "username": "Pepito Grillo",
+  "email": "grillo@gmail.com",
+  "password": "Admin123!"
+}
+
+###
+
 DELETE http://localhost:3000/api/products/5
 
 ###
