@@ -3,6 +3,7 @@ const bcrypt = require('bcryptjs');
 const { body, validationResult } = require('express-validator');
 const { createToken } = require('../../helpers');
 const { create, getByEmail, getById } = require('../../models/user.model');
+const { checkToken } = require('../middlewares');
 
 router.post(
 	'/register',
@@ -66,5 +67,15 @@ router.post('/login', async (req, res) => {
 		});
 	}
 });
+
+// ruta que nos da la info del usuario y que esté protegida por TOKEN //
+// por eso ponemos el middleware checkToken //
+router.get('/', checkToken, async (req, res) => {
+	//console.log(req)
+	//aqui obtenemos el usuario //
+	delete req.user.password;
+	res.json(req.user);
+	//res.json({ user: 'hola' });
+})
 
 module.exports = router;
