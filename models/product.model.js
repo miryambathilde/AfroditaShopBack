@@ -11,7 +11,7 @@ const { executeQuery, executeQueryUnique } = require('../helpers');
 // calcular offset: limit * (page-1)
 // lo INICIAMOS EN LOS PARAMETROS POR DEFECTO: PAGE 1 Y LIMIT 5
 
-const getAll = (page = 1, limit = 5) => {
+const getAll = (page = 1, limit = 1000) => {
 	return executeQuery('select * from products limit ? offset ?', [
 		limit,
 		limit * [page - 1],
